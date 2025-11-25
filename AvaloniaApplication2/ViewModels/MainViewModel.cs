@@ -119,6 +119,8 @@ public partial class MainViewModel : ViewModelBase
 
         NextRoundCommand = new RelayCommand(_model.NextRound);
         PlayerGuessCommand = new RelayCommand(() => _model.AfterPlayerGuess(plPick));
+
+        _model.NextRound();
     }
     public void valami(object s, GuessThePriceEventArgs e)
     {
