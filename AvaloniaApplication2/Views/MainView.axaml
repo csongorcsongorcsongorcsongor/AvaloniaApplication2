@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaApplication2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication2.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" Content="{Binding minPrice}"></Label>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding maxPrice}"></Label>
+        <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Content="{Binding actualPrice}"></Label>
+
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Command="{Binding NextRoundCommand}"></Button>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" >
+            <Label Grid.Row="4" Content="Opponent's guess"></Label>
+            <Label Grid.Row="4" Content="{Binding opPick}"></Label>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1" >
+            <TextBox Text="{Binding plPick}" ></TextBox>
+            <Button Content="Make guess" Command="{Binding PlayerGuessCommand}"></Button>
+        </StackPanel>
+        <Label Content="{Binding winnerText}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+    </Grid>
+</UserControl>
